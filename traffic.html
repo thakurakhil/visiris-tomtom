@@ -10,13 +10,21 @@
         <script type='text/javascript' src='js/form.js'></script>
         <script type='text/javascript' src='sdk/tomtom.min.js'></script>
         <style>
+           .circle {
+                width: 42px;
+                height: 42px;
+                line-height: 42px;
+                background-color: #f00;
+                border-radius: 50%;
+                display: inline-block;
+                text-align: center;
+            }
             .mycluster {
-            width: 40px;
-            height: 40px;
-            background-color: red;
-            text-color: white; 
+            width: 46px;
+            height: 46px;
+            background-color: transparent;
             text-align: center;
-            font-size: 24px;
+            font-size: 20px;
         }
 
             .popup span {
@@ -282,7 +290,9 @@ var markersclus = tomtom.L.markerClusterGroup({
                 for (var i = 0; i < markerschild.length; i++) {
                     n += markerschild[i].violations;
                 }
-                return L.divIcon({ html: n , className: 'mycluster', iconSize: L.point(40, 40)  }); } });
+                var html = '<div class="circle">' + n + '</div>';
+
+                return L.divIcon({ html: html , className: 'mycluster',iconSize: L.point(40, 40)  }); } });
 
         addressPoints.forEach(function(point) {
             var violation = point[7] + point[8] + point[9] + point[10],
