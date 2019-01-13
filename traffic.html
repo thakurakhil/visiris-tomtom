@@ -246,7 +246,8 @@ var addressPoints = [
             return name && name.toLowerCase().indexOf('vector') >= 0;
         }
         panel.querySelector('#trafficIncidents').addEventListener('change', setIncidentsLayer);
-
+        setIncidentsLayer();
+        
         panel.querySelector('#trafficStyle').addEventListener('change', function(event) {
             var selectedOption = event.target.value;
             vectorTrafficFlowOptions.style = selectedOption;
