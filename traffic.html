@@ -37,6 +37,10 @@
         box-shadow: rgba(235, 0, 0, 1) 0 2px 5px;
         width: 600px;
       }
+
+      .violation-bind-label {
+    color:#EB0000;
+}
             .popup span {
                 font-weight: bold;
             }
@@ -119,18 +123,6 @@
         tomtom.trafficKey('4MKK5U9gWHxoWgE6rcyqNQWR08T9LndZ');
         tomtom.trafficFlowKey('4MKK5U9gWHxoWgE6rcyqNQWR08T9LndZ');
 
-        var markerOptions = {
-        icon: tomtom.L.icon({
-            iconUrl: './img/icon.png',
-                    iconSize: [32, 37],
-                    iconAnchor: [16, 2],
-                    
-            })
-        };
-
-
-//[index, lat, long, cars, bikes, heavy vehicles, auto, helmet, wrong direction, hawkers, triple riding, video url]
-//[0    , 1  , 2   , 3   , 4     , 5             , 6 ,   7,       8,              9,        10         ,     11   ]
 var addressPoints = [
             [0, 17.445434, 78.352301, 30, 104, 13, 43, 31, 2, 5, 1, "VehicularCount.mp4"],
             [1, 17.395699, 78.431459, 30, 104, 13, 43, 31, 2, 5, 1, "VehicularCount.mp4"],
@@ -141,6 +133,24 @@ var addressPoints = [
             
             
         ];
+
+        function markerOptionsFunc(index, totalViolations) {
+            // body...  html: '<span class="marker-div-span">' + addressPoints[index][totalViolations] + '</span>'
+
+        
+        var markerOptions = {
+        icon: tomtom.L.icon({
+            iconUrl: './img/icon.png',
+                    iconSize: [32, 37],
+                    iconAnchor: [16, 2],
+                    
+            })
+        };
+        return markerOptions;
+    }
+//[index, lat, long, cars, bikes, heavy vehicles, auto, helmet, wrong direction, hawkers, triple riding, video url]
+//[0    , 1  , 2   , 3   , 4     , 5             , 6 ,   7,       8,              9,        10         ,     11   ]
+
 
 
         function popupText1(index) {
@@ -303,7 +313,14 @@ var markersclus = tomtom.L.markerClusterGroup({
 
         addressPoints.forEach(function(point) {
             var violation = point[7] + point[8] + point[9] + point[10];
-                markerc = tomtom.L.marker(new tomtom.L.LatLng(point[1], point[2]), markerOptions);
+                markerc = tomtom.L.marker(new tomtom.L.LatLng(point[1], point[2]), markerOptionsFunc(point[0], violation));
+                markerc.bindTooltip("" + violation, 
+                                    {
+                                        permanent: true, 
+                                        direction: 'right',
+                                         className: "violation-bind-label"
+                                    }
+                                );
             markerc.bindPopup(popupText1(point[0]));
             markerc.violations = violation;
             markersclus.addLayer(markerc);
