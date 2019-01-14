@@ -119,9 +119,9 @@
         // Define your product name and version
         tomtom.setProductInfo('MapsWebSDKExamplesSelfhosted', '4.47.2-SNAPSHOT');
         // Set TomTom keys
-        tomtom.key('4MKK5U9gWHxoWgE6rcyqNQWR08T9LndZ');
-        tomtom.trafficKey('4MKK5U9gWHxoWgE6rcyqNQWR08T9LndZ');
-        tomtom.trafficFlowKey('4MKK5U9gWHxoWgE6rcyqNQWR08T9LndZ');
+        tomtom.key('pT4laE29HCG3WN17vszrwqKuFPK9n64A');
+        tomtom.trafficKey('pT4laE29HCG3WN17vszrwqKuFPK9n64A');
+        tomtom.trafficFlowKey('pT4laE29HCG3WN17vszrwqKuFPK9n64A');
 
 var addressPoints = [
             [0, 17.445434, 78.352301, 30, 104, 13, 43, 31, 2, 5, 1, "VehicularCount.mp4"],
@@ -211,13 +211,13 @@ var addressPoints = [
             case 'vector':
                 return new L.TomTomVectorTrafficWithIncidentsLayer({
                     style: style,
-                    key: '4MKK5U9gWHxoWgE6rcyqNQWR08T9LndZ',
+                    key: 'pT4laE29HCG3WN17vszrwqKuFPK9n64A',
                     basePath: '/sdk'
                 });
             case 'raster':
                 return new L.TomTomTrafficWithIncidentsLayer({
                     style: style,
-                    key: '4MKK5U9gWHxoWgE6rcyqNQWR08T9LndZ'
+                    key: 'pT4laE29HCG3WN17vszrwqKuFPK9n64A'
                 });
             default:
                 return null;
