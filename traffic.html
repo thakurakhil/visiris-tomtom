@@ -14,10 +14,11 @@
                 width: 42px;
                 height: 42px;
                 line-height: 42px;
-                background-color: #f00;
+                background-color: #EB0000;
                 border-radius: 50%;
                 display: inline-block;
                 text-align: center;
+
             }
             .mycluster {
             width: 46px;
@@ -26,7 +27,16 @@
             text-align: center;
             font-size: 20px;
         }
-
+        .map-container {
+        padding: 6px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #ccc #ccc #999 #ccc;
+        -webkit-box-shadow: rgba(235, 0, 0, 1) 0 2px 5px;
+        -moz-box-shadow: rgba(235, 0, 0, 1) 0 2px 5px;
+        box-shadow: rgba(235, 0, 0, 1) 0 2px 5px;
+        width: 600px;
+      }
             .popup span {
                 font-weight: bold;
             }
@@ -110,18 +120,14 @@
         tomtom.trafficFlowKey('4MKK5U9gWHxoWgE6rcyqNQWR08T9LndZ');
 
         var markerOptions = {
-            icon: tomtom.L.svgIcon({
-                icon: {
-                    icon: 'fa fa-camera',
+        icon: tomtom.L.icon({
+            iconUrl: './img/icon.png',
                     iconSize: [32, 37],
                     iconAnchor: [16, 2],
-                    style: {
-                        color: '#fff'
-                    },
-                    noPlainSVG: true
-                }
+                    
             })
         };
+
 
 //[index, lat, long, cars, bikes, heavy vehicles, auto, helmet, wrong direction, hawkers, triple riding, video url]
 //[0    , 1  , 2   , 3   , 4     , 5             , 6 ,   7,       8,              9,        10         ,     11   ]
@@ -291,12 +297,12 @@ var markersclus = tomtom.L.markerClusterGroup({
                 for (var i = 0; i < markerschild.length; i++) {
                     n += markerschild[i].violations;
                 }
-                var html = '<div class="circle">' + n + '</div>';
+                var html = '<div class="circle"> <span>' + n + ' </span></div>';
 
-                return L.divIcon({ html: html , className: 'mycluster',iconSize: L.point(40, 40)  }); } });
+                return L.divIcon({ html: html , className: 'map-container circle',iconSize: L.point(40, 40)  }); } });
 
         addressPoints.forEach(function(point) {
-            var violation = point[7] + point[8] + point[9] + point[10],
+            var violation = point[7] + point[8] + point[9] + point[10];
                 markerc = tomtom.L.marker(new tomtom.L.LatLng(point[1], point[2]), markerOptions);
             markerc.bindPopup(popupText1(point[0]));
             markerc.violations = violation;
