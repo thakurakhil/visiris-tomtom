@@ -41,6 +41,8 @@
       .violation-bind-label {
      background-color: #00F;
     color:#FFF;
+    font-size: 12px;
+     padding: 2px;
 }
             .popup span {
                 font-weight: bold;
@@ -156,7 +158,7 @@ var addressPoints = [
         var markerOptions = {
         icon: tomtom.L.icon({
             iconUrl: './img/icon.png',
-                    iconSize: [32, 37],
+                    iconSize: [24, 27],
                     iconAnchor: [16, 2],
                     
             })
@@ -188,7 +190,7 @@ var addressPoints = [
 
         var map = tomtom.L.map('map', {
             source: ['vector', 'raster'],
-            zoom: 8,
+            zoom: 9,
             maxZoom: 18,
             basePath: '/sdk',
             minZoom: 5,
