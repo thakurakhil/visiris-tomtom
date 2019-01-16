@@ -11,15 +11,16 @@
         <script type='text/javascript' src='sdk/tomtom.min.js'></script>
         <style>
            .circle {
-                width: 18px;
-                height: 18px;
-                line-height: 18px;
+                width: 13px;
+                height: 13px;
+                line-height: 13px;
                 background-color: #00F;
                 border-radius: 50%;
                 display: inline-block;
                 text-align: center;
                 color:#FFF;
                  font-weight: bold;
+                 font-size: 9px;
 
             }
             .mycluster {
@@ -44,7 +45,7 @@
       .violation-bind-label {
      background-color: #00F;
     color:#FFF;
-    font-size: 12px;
+    font-size: 10px;
      padding: 2px;
      font-weight: bold;
 }
@@ -330,7 +331,7 @@ var markersclus = tomtom.L.markerClusterGroup({
                 }
                 var html = '<div class="circle"> <span>' + n + ' </span></div>';
 
-                return L.divIcon({ html: html , className: 'map-container circle',iconSize: L.point(18, 18)  }); } });
+                return L.divIcon({ html: html , className: 'map-container circle',iconSize: L.point(13, 13)  }); } });
 
         addressPoints.forEach(function(point) {
             var violation = point[7] + point[8] + point[9] + point[10];
